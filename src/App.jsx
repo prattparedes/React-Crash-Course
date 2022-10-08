@@ -4,8 +4,11 @@ import Todo from "./Components/Todo.jsx";
 import Modal from "./Components/Modal.jsx";
 import React, { useState } from 'react';
 import Counter from "./Components/Counter.jsx"
+import Array from "./Components/Array.jsx"
+
 
 function App() {
+  return <Array />
   
   return <Counter />
 
