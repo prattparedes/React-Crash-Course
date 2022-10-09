@@ -3,8 +3,6 @@ import Title from "./Components/Title.jsx";
 import Todo from "./Components/Todo.jsx";
 import Modal from "./Components/Modal.jsx";
 import React, { useState, useEffect } from 'react';
-import Counter from "./Components/Counter.jsx"
-import Array from "./Components/Array.jsx"
 
 
 function App() {
