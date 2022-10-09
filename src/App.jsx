@@ -2,7 +2,7 @@ import "./App.css";
 import Title from "./Components/Title.jsx";
 import Todo from "./Components/Todo.jsx";
 import Modal from "./Components/Modal.jsx";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Counter from "./Components/Counter.jsx"
 import Array from "./Components/Array.jsx"
 
@@ -10,10 +10,30 @@ import Array from "./Components/Array.jsx"
 function App() {
   const [showModal, setShowModal] = useState(false)
 
-  function showModalF() {
-    !showModal ? setShowModal(!showModal) : <></> 
+  function onTodoDelete() {
+    setShowModal(true)
   }
-  
+
+  function cancelModal() {
+    setShowModal(false)
+  }
+
+  function confirmModal() {
+    setShowModal(false)
+  }
+
+  useEffect(() => {
+    console.log('on mount')
+  }, [])
+
+  useEffect(() => {
+    console.log(`on mount and on ${showModal} change`)
+  }, [showModal])
+
+  useEffect(() => {
+    console.log('every time it renders')
+  })
+
   return (
     <div>
       <Title />
@@ -25,16 +45,19 @@ function App() {
       </div>
       <div className="todo__wrapper">
         <Todo
+          onTodoDelete={onTodoDelete}
           title="Finish Frontend Simplified"
         />
-        <Todo 
+        <Todo
+          onTodoDelete={onTodoDelete} 
           title="Finish Interview Section"
          />
-        <Todo 
+        <Todo
+          onTodoDelete={onTodoDelete}  
           title="Land a $100k Job" 
         />
       </div>
-      {showModal ? <Modal title="Confirm delete?" /> : <></>}
+      {showModal ? <Modal confirmModal={confirmModal} cancelModal={cancelModal} title="Confirm delete?" /> : <></>}
     </div>
   );
 }
