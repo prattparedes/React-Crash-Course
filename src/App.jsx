@@ -8,12 +8,12 @@ import Array from "./Components/Array.jsx"
 
 
 function App() {
-  return <Array />
-  
-  return <Counter />
-
   const [showModal, setShowModal] = useState(false)
 
+  function showModalF() {
+    !showModal ? setShowModal(!showModal) : <></> 
+  }
+  
   return (
     <div>
       <Title />
